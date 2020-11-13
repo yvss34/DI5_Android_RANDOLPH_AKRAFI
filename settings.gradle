@@ -1,0 +1,3 @@
+include ':tp2b'
+include ':tp1'
+rootProject.name = "MonAppli"
