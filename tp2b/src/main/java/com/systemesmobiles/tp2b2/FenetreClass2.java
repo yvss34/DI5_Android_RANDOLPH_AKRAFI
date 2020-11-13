@@ -2,6 +2,7 @@ package com.systemesmobiles.tp2b2;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,11 +24,16 @@ public class FenetreClass2 extends Activity {
         });
 
 //récupération du text dans le champ de saisie
-        final EditText textchampsaisie = (EditText) findViewById(R.id.editTextTextPersonName2);
-        Bundle objetbunble = this.getIntent().getExtras();
+         EditText textNom = (EditText) findViewById(R.id.editTextNom);
+         EditText textPrenom = (EditText) findViewById(R.id.editTextPrenom);
+         EditText textAge = (EditText) findViewById(R.id.editTextAge);
+
+         Bundle objetbunble = this.getIntent().getExtras();
 // récupération de la valeur
-        String InfoPasse= objetbunble .getString("passInfo");
+        Personne personne = (Personne)objetbunble.getSerializable("person");
 // on afffiche l'information dans l'edittext
-        textchampsaisie .setText(InfoPasse);
+        textNom .setText(personne.getNom());
+        textPrenom .setText(personne.getPrenom());
+        textAge .setText(personne.getAge());
     }
 }
