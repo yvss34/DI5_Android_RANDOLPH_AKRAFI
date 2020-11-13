@@ -7,7 +7,7 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "com.example.tp2b2"
+        applicationId "com.systemesmobiles.tp2b2"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1

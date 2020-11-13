@@ -1,8 +1,7 @@
-package com.example.tp2b2;
+package com.systemesmobiles.tp2b2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.widget.Button;
 import android.view.View;
