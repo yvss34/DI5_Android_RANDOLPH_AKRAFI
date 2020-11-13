@@ -1,4 +1,4 @@
-package com.example.tp2b;
+package com.systemesmobiles.tp2b2;
 
 import org.junit.Test;
 
