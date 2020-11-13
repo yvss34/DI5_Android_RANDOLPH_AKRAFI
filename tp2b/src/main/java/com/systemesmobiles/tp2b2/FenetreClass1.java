@@ -35,7 +35,9 @@ public class FenetreClass1 extends AppCompatActivity {
         //lecontext = this;
 
         //récupération du text dans le champ de saisie
-        final EditText textchampsaisie = (EditText) findViewById(R.id.editText1);
+        final EditText nom = (EditText) findViewById(R.id.editTextNom);
+        final EditText prenom = (EditText) findViewById(R.id.editTextPrenom);
+        final EditText age = (EditText) findViewById(R.id.editTextAge);
         Button btaction = (Button) findViewById(R.id. btecrire);
 
         //action sur le bouton click appelle de la nouvelle activité
@@ -43,11 +45,15 @@ public class FenetreClass1 extends AppCompatActivity {
             public void onClick(View v) {
                 //création de notre item
                 Intent defineIntent = new Intent(FenetreClass1.this, FenetreClass2.class);
+                //Creation de l'objet Personne
+                Personne personne = new Personne(nom.getText().toString(),prenom.getText().toString(),age.getText().toString());
+                Personne person = new Personne();
                 // objet qui vas nous permettre de passe des variables ici la variable passInfo
                 Bundle objetbunble = new Bundle();
-                objetbunble .putString("passInfo",textchampsaisie.getText().toString());
+                objetbunble .putSerializable("person",personne);
                 // on passe notre objet a notre activities
-                defineIntent.putExtras(objetbunble );
+
+                defineIntent.putExtras(objetbunble);
                 // on appelle notre activité
                 startActivityForResult(defineIntent, 0);
             }

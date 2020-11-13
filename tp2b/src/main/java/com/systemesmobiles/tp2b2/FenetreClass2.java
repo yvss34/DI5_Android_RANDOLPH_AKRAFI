@@ -25,6 +25,19 @@ public class FenetreClass2 extends Activity {
         // on afffiche l'information dans l'edittext
         textchampsaisie .setText(InfoPasse);
 
+        //récupération du text dans le champ de saisie
+        EditText textNom = (EditText) findViewById(R.id.editTextNom);
+        EditText textPrenom = (EditText) findViewById(R.id.editTextPrenom);
+        EditText textAge = (EditText) findViewById(R.id.editTextAge);
+
+        objetbunble = this.getIntent().getExtras();
+// récupération de la valeur
+        Personne personne = (Personne)objetbunble.getSerializable("person");
+// on afffiche l'information dans l'edittext
+        textNom .setText(personne.getNom());
+        textPrenom .setText(personne.getPrenom());
+        textAge .setText(personne.getAge());
+
         final Button button = findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
