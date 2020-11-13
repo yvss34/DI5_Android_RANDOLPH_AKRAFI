@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -10,9 +11,11 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="151dp"
-        tools:layout_editor_absoluteY="300dp" />
+        android:layout_marginTop="160dp"
+        android:layout_margin="260dp"
+        android:text="Go Back"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2"
+        tools:layout_editor_absoluteX="263dp" />
 
     <EditText
         android:id="@+id/editTextTextPersonName2"
@@ -21,8 +24,8 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
-        tools:layout_editor_absoluteX="101dp"
-        tools:layout_editor_absoluteY="164dp" />
+        tools:layout_editor_absoluteX="209dp"
+        tools:layout_editor_absoluteY="252dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

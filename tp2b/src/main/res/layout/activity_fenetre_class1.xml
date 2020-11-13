@@ -13,9 +13,9 @@
         android:gravity="center_horizontal"
         android:text="Entrez un texte dans le champ
 ci-dessous puis cliquez sur le bouton"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="70dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="102dp"
+        tools:layout_editor_absoluteY="210dp" />
 
     <EditText
         android:id="@+id/editText1"
@@ -23,10 +23,11 @@ ci-dessous puis cliquez sur le bouton"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="74dp"
         android:ems="10"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="120dp"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/textView1"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="195dp" />
 
     <Button
         android:id="@+id/btecrire"
@@ -34,9 +35,10 @@ ci-dessous puis cliquez sur le bouton"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editText1"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="145dp"
         android:text="GO"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="176dp"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/editText1"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="256dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

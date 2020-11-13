@@ -12,6 +12,21 @@ import android.content.Intent;
 public class FenetreClass1 extends AppCompatActivity {
 
     //Activity lecontext;
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // Si le résultat provient d’une demande de la fenêtre1
+        if (requestCode == 0) {
+        // le code retour est bon
+            if (resultCode == 1) {
+                //récupération du text dans le champ de saisie
+                final EditText textchampsaisie = (EditText) findViewById(R.id.editText1);
+                // récupération de la valeur
+                String InfoPasse= data.getStringExtra("passInfoBack");
+                textchampsaisie.setText(InfoPasse);
+            }
+        }
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,7 +49,7 @@ public class FenetreClass1 extends AppCompatActivity {
                 // on passe notre objet a notre activities
                 defineIntent.putExtras(objetbunble );
                 // on appelle notre activité
-                startActivity(defineIntent);
+                startActivityForResult(defineIntent, 0);
             }
         });
     }
