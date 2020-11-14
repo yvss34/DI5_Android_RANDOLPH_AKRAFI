@@ -21,6 +21,7 @@ public class FenetreClass1 extends AppCompatActivity {
         final EditText nom = (EditText) findViewById(R.id.editTextNom);
         final EditText prenom = (EditText) findViewById(R.id.editTextPrenom);
         final EditText age = (EditText) findViewById(R.id.editTextAge);
+        final EditText editTextHelloWorld = (EditText) findViewById(R.id.editTextHelloWorld);
         Button btaction = (Button) findViewById(R.id. btecrire);
 
         //action sur le bouton click appelle de la nouvelle activité
@@ -35,6 +36,7 @@ public class FenetreClass1 extends AppCompatActivity {
                 // Conteneur qui vas nous permettre de passer l'objet personne
                 Bundle objetbunble = new Bundle();
                 objetbunble .putSerializable("personne",personne);
+                objetbunble .putString("passInfo",editTextHelloWorld.getText().toString());
 
                 // on insere le bundle dans l'intent
                 defineIntent.putExtras(objetbunble);
@@ -56,10 +58,10 @@ public class FenetreClass1 extends AppCompatActivity {
             // le code retour est bon
             if (resultCode == 1) {
                 //récupération du text dans le champ de saisie
-                final TextView textchampsaisie = (TextView) findViewById(R.id.textViewHelloWorld);
+                final TextView textChampSaisie = (EditText) findViewById(R.id.editTextHelloWorld);
                 // récupération de la valeur
                 String InfoPasse= data.getStringExtra("passInfoBack");
-                textchampsaisie.setText(InfoPasse);
+                textChampSaisie.setText(InfoPasse);
             }
         }
     }

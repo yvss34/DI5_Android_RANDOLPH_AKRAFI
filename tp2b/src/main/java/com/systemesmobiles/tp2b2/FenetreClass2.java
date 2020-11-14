@@ -20,6 +20,7 @@ public class FenetreClass2 extends Activity {
         TextView textNom = (TextView) findViewById(R.id.TextViewNom);
         TextView textPrenom = (TextView) findViewById(R.id.TextViewPrenom);
         TextView textAge = (TextView) findViewById(R.id.TextViewAge);
+        TextView textViewInfoFenetre1 = (TextView) findViewById(R.id.textViewInfoFenetre1);
 
         //Recuperation de l'intent
         Intent intent = this.getIntent();
@@ -27,11 +28,13 @@ public class FenetreClass2 extends Activity {
         Bundle objetbunble = intent.getExtras();
         // récupération de la valeur
         Personne personne = (Personne)objetbunble.getSerializable("personne");
+        String InfoPasse= objetbunble .getString("passInfo");
 
         // on afffiche l'information dans les TextView
         textNom .setText(personne.getNom());
         textPrenom .setText(personne.getPrenom());
         textAge .setText(personne.getAge());
+        textViewInfoFenetre1.setText(InfoPasse);
 
         //action sur le bouton permettant de revenir à la fenêtre 1 et envoi un resultat
         final Button button = findViewById(R.id.button);
