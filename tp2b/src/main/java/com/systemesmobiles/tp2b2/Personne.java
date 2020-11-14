@@ -6,11 +6,16 @@ import android.os.Parcelable;
 
 import java.io.Serializable;
 
+/*
+    Classe Personne implemente serialisable pour que l'on puisse l'inserer dans un intent
+ */
 public class Personne implements Serializable {
 
+    //Attributs
     private String nom,prenom;
     private String age;
 
+    //Getters
     public String getNom() {
         return nom;
     }
@@ -23,9 +28,7 @@ public class Personne implements Serializable {
         return age;
     }
 
-    public Personne(){
-    }
-
+    //Constructeur de confort
     public Personne(String pNom, String pPrenom, String pAge){
         nom = pNom;
         prenom = pPrenom;

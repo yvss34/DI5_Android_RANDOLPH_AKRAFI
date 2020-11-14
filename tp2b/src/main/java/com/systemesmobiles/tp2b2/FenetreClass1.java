@@ -11,30 +11,12 @@ import android.content.Intent;
 
 public class FenetreClass1 extends AppCompatActivity {
 
-    //Activity lecontext;
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        // Si le résultat provient d’une demande de la fenêtre1
-        if (requestCode == 0) {
-        // le code retour est bon
-            if (resultCode == 1) {
-                //récupération du text dans le champ de saisie
-                final EditText textchampsaisie = (EditText) findViewById(R.id.editText1);
-                // récupération de la valeur
-                String InfoPasse= data.getStringExtra("passInfoBack");
-                textchampsaisie.setText(InfoPasse);
-            }
-        }
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fenetre_class1);
-        //lecontext = this;
 
-        //récupération du text dans le champ de saisie
+        //Attribut du layout
         final EditText nom = (EditText) findViewById(R.id.editTextNom);
         final EditText prenom = (EditText) findViewById(R.id.editTextPrenom);
         final EditText age = (EditText) findViewById(R.id.editTextAge);
@@ -45,18 +27,39 @@ public class FenetreClass1 extends AppCompatActivity {
             public void onClick(View v) {
                 //création de notre item
                 Intent defineIntent = new Intent(FenetreClass1.this, FenetreClass2.class);
+
                 //Creation de l'objet Personne
                 Personne personne = new Personne(nom.getText().toString(),prenom.getText().toString(),age.getText().toString());
-                Personne person = new Personne();
-                // objet qui vas nous permettre de passe des variables ici la variable passInfo
-                Bundle objetbunble = new Bundle();
-                objetbunble .putSerializable("person",personne);
-                // on passe notre objet a notre activities
 
+                // Conteneur qui vas nous permettre de passer l'objet personne
+                Bundle objetbunble = new Bundle();
+                objetbunble .putSerializable("personne",personne);
+
+                // on insere le bundle dans l'intent
                 defineIntent.putExtras(objetbunble);
-                // on appelle notre activité
+
+                // on appelle notre activité avec intention d'attente d'un resultat
                 startActivityForResult(defineIntent, 0);
             }
         });
+    }
+
+    /*
+    Fonction permettant de capter les informations envoyées par la fenêtre 2
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // Si le résultat provient d’une demande de la fenêtre1
+        if (requestCode == 0) {
+            // le code retour est bon
+            if (resultCode == 1) {
+                //récupération du text dans le champ de saisie
+                final EditText textchampsaisie = (EditText) findViewById(R.id.editTextHelloWorld);
+                // récupération de la valeur
+                String InfoPasse= data.getStringExtra("passInfoBack");
+                textchampsaisie.setText(InfoPasse);
+            }
+        }
     }
 }

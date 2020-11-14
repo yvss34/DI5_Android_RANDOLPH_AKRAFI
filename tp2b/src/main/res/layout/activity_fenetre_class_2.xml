@@ -18,8 +18,8 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="252dp" />
 
-    <EditText
-        android:id="@+id/editTextAge"
+    <TextView
+        android:id="@+id/TextViewAge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="504dp"
@@ -31,18 +31,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        tools:layout_editor_absoluteX="209dp"
-        tools:layout_editor_absoluteY="252dp" />
-
-    <EditText
-        android:id="@+id/editTextPrenom"
+    <TextView
+        android:id="@+id/TextViewPrenom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -52,8 +42,8 @@
         tools:layout_editor_absoluteY="354dp"
         tools:ignore="MissingConstraints" />
 
-    <EditText
-        android:id="@+id/editTextNom"
+    <TextView
+        android:id="@+id/TextViewNom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"

@@ -19,7 +19,7 @@ ci-dessous puis cliquez sur le bouton"
         tools:layout_editor_absoluteX="16dp" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/editTextHelloWorld"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView1"
