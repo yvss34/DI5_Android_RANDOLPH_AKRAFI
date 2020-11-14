@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.view.View;
 import android.widget.EditText;
 import android.content.Intent;
+import android.widget.TextView;
 
 
 public class FenetreClass1 extends AppCompatActivity {
@@ -14,7 +15,7 @@ public class FenetreClass1 extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fenetre_class1);
+        setContentView(R.layout.activity_fenetreclass1);
 
         //Attribut du layout
         final EditText nom = (EditText) findViewById(R.id.editTextNom);
@@ -55,7 +56,7 @@ public class FenetreClass1 extends AppCompatActivity {
             // le code retour est bon
             if (resultCode == 1) {
                 //récupération du text dans le champ de saisie
-                final EditText textchampsaisie = (EditText) findViewById(R.id.editTextHelloWorld);
+                final TextView textchampsaisie = (TextView) findViewById(R.id.textViewHelloWorld);
                 // récupération de la valeur
                 String InfoPasse= data.getStringExtra("passInfoBack");
                 textchampsaisie.setText(InfoPasse);

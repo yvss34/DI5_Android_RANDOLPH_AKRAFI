@@ -14,7 +14,7 @@ public class FenetreClass2 extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fenetre_class_2);
+        setContentView(R.layout.activity_fenetreclass2);
 
         //récupération des attributs du Layout
         TextView textNom = (TextView) findViewById(R.id.TextViewNom);
