@@ -1,4 +1,4 @@
-package com.systemesmobiles.monappli;
+package com.systemesmobiles.tp2b2;
 
 import android.content.Context;
 
@@ -16,11 +16,11 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 @RunWith(AndroidJUnit4.class)
-public class systemesmobilesInstrumentedTest {
+public class ExampleInstrumentedTest {
     @Test
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.systemesmobiles.monappli", appContext.getPackageName());
+        assertEquals("com.systemesmobiles.tp2b2", appContext.getPackageName());
     }
 }
