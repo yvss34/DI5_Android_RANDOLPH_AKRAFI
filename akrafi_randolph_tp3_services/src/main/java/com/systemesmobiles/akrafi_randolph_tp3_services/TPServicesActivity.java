@@ -22,10 +22,12 @@ public class TPServicesActivity extends AppCompatActivity {
         Button buttonDeconnexion = (Button) findViewById(R.id. buttonDeconnexion);
         Button buttonStop = (Button) findViewById(R.id. buttonStop);
 
+        Intent intent = new Intent(this, BackgroundService.class);
+
         //action sur le boutton Start
         buttonStart.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-
+                    startService(intent);
             }
         });
 
@@ -46,7 +48,7 @@ public class TPServicesActivity extends AppCompatActivity {
         //action sur le boutton Stop
         buttonStop.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-
+                stopService(intent);
             }
         });
 
