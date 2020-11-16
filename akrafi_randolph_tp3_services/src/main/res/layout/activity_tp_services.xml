@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TPServicesActivity">
+
+    <TextView
+        android:id="@+id/TextViewHelloWorld"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World, TPServicesActivity"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.005"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.027" />
+
+    <Button
+        android:id="@+id/buttonStart"
+        android:layout_width="158dp"
+        android:layout_height="49dp"
+        android:text="Start"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="65dp" />
+
+    <Button
+        android:id="@+id/buttonConnexion"
+        android:layout_width="154dp"
+        android:layout_height="56dp"
+        android:text="Connexion"
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="122dp" />
+
+    <Button
+        android:id="@+id/buttonDeconnexion"
+        android:layout_width="158dp"
+        android:layout_height="52dp"
+        android:text="Deconnexion"
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="193dp" />
+
+    <Button
+        android:id="@+id/buttonStop"
+        android:layout_width="157dp"
+        android:layout_height="59dp"
+        android:text="Stop"
+        tools:layout_editor_absoluteX="17dp"
+        tools:layout_editor_absoluteY="256dp" />
+
+    <EditText
+        android:id="@+id/editText_main"
+        android:layout_width="373dp"
+        android:layout_height="51dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        tools:layout_editor_absoluteX="17dp"
+        tools:layout_editor_absoluteY="338dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
