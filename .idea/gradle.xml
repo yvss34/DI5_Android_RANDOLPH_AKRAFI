@@ -11,7 +11,9 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/akrafi_randolph_tp3_services" />
             <option value="$PROJECT_DIR$/tp1" />
+            <option value="$PROJECT_DIR$/tp2b" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

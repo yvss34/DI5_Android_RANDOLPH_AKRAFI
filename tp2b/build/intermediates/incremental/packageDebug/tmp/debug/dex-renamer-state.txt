@@ -1,0 +1,4 @@
+#Sat Nov 14 10:45:50 CET 2020
+base.0=C\:\\Users\\rando\\OneDrive\\Documents\\DI5\\Systeme_Mobile\\TPs\\Project_AKRAFI_RANDOLPH\\tp2b\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
