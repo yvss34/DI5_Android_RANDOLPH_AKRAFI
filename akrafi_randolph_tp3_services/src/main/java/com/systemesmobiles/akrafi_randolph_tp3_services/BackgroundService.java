@@ -7,12 +7,17 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+import com.systemesmobiles.akrafi_randolph_tp3_services.interfaces.IBackgroundService;
+import com.systemesmobiles.akrafi_randolph_tp3_services.interfaces.IBackgroundServiceListener;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class BackgroundService extends Service {
+public class BackgroundService extends Service implements IBackgroundService {
     private Timer timer;
+    private ArrayList<IBackgroundServiceListener> listeners = null;
 
     @Override
     public void onCreate() {
@@ -37,11 +42,35 @@ public class BackgroundService extends Service {
     public void onDestroy() {
         Log.d(this.getClass().getName(), "onDestroy");
         this.timer.cancel();
+
+        // vider la liste des listeners
+        this.listeners.clear();
     }
 
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
         return null;
+    }
+
+    // Ajout d'un listener
+    @Override
+    public void addListener(IBackgroundServiceListener listener) {
+        if(listeners != null){ listeners.add(listener); }
+    }
+
+    // Suppression d'un listener
+    @Override
+    public void removeListener(IBackgroundServiceListener listener) {
+        if(listeners != null){ listeners.remove(listener); }
+    }
+
+    // Notification des listeners
+    private void fireDataChanged(Object data){
+        if(listeners != null){
+            for(IBackgroundServiceListener listener: listeners) {
+                listener.dataChanged(data);
+            }
+        }
     }
 }
