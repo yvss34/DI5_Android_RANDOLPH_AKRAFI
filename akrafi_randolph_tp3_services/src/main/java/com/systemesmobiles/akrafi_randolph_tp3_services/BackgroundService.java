@@ -30,10 +30,11 @@ public class BackgroundService extends Service implements IBackgroundService {
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d(this.getClass().getName(), "onStart");
         timer.scheduleAtFixedRate(new TimerTask() {
-            final Date date = new Date();
             public void run() {
-                Log.i(this.getClass().getName(), String.valueOf(date.getTime()));
+                final Date date = new Date();
+                Log.i(this.getClass().getName(), String.valueOf(date.getHours()) + ":" + String.valueOf(date.getMinutes()) + ":" + String.valueOf(date.getSeconds()) );
             }
+            // Pas de délais d'attente et affichage toute les secondes
         }, 0, 1000);
         return START_NOT_STICKY;
     }
