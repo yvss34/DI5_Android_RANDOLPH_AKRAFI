@@ -19,6 +19,8 @@ import java.util.Date;
 
 public class TPServicesActivity extends AppCompatActivity {
 
+    IBackgroundService monservice = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,8 +34,6 @@ public class TPServicesActivity extends AppCompatActivity {
         Button buttonStop = (Button) findViewById(R.id. buttonStop);
 
         TPServicesActivity context = this;
-        BackgroundService service = new BackgroundService();
-
         Intent intent = new Intent(this, BackgroundService.class);
         //Création des listeners
         IBackgroundServiceListener listener = new IBackgroundServiceListener() {
@@ -48,12 +48,13 @@ public class TPServicesActivity extends AppCompatActivity {
             }
         };
 
+
         //Création de l’objet Connexion
         ServiceConnection connection = new ServiceConnection() {
             @Override
             public void onServiceConnected(ComponentName name, IBinder service) {
                 Log.i("BackgroundService", "Connected!");
-                IBackgroundService monservice = ((BackgroundServiceBinder)service).getService();
+                monservice = ((BackgroundServiceBinder)service).getService();
                 monservice.addListener(listener);
             }
             public void onServiceDisconnected(ComponentName name) {
@@ -76,18 +77,33 @@ public class TPServicesActivity extends AppCompatActivity {
         //action sur le boutton Deconnexion
         buttonDeconnexion.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-                unbindService(connection);
-                service.removeListener(listener);
+                if (monservice != null) {
+                    if (monservice.getListeners() != null) {
+                        if (!monservice.getListeners().isEmpty()) {
+                            unbindService(connection);
+                            monservice.removeListener(listener);
+                        }
+                    }
+                }
             }
         });
 
         //action sur le boutton Stop
         buttonStop.setOnClickListener(new Button.OnClickListener() {
-            public void onClick(View v) { stopService(intent); }
+            public void onClick(View v) {
+                if (monservice != null) {
+                    if (monservice.getListeners() != null) {
+                        if (!monservice.getListeners().isEmpty()) {
+                            for (IBackgroundServiceListener listener : monservice.getListeners()) {
+                                unbindService(connection);
+                                monservice.removeListener(listener);
+                            }
+                        }
+                        stopService(intent);
+                    }
+                }
+            }
         });
-
-
-
 
     }
 }

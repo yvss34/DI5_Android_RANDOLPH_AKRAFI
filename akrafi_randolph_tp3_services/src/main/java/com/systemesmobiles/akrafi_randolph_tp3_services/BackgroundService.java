@@ -71,6 +71,11 @@ public class BackgroundService extends Service implements IBackgroundService {
         if(listeners != null){ listeners.remove(listener); }
     }
 
+    @Override
+    public ArrayList<IBackgroundServiceListener> getListeners() {
+        return listeners;
+    }
+
     // Notification des listeners
     private void fireDataChanged(Object data){
         if(listeners != null){
