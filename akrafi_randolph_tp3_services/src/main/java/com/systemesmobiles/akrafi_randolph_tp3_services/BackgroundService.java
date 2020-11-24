@@ -16,7 +16,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class BackgroundService extends Service implements IBackgroundService {
+
     private Timer timer;
+    private BackgroundServiceBinder binder ;
     private ArrayList<IBackgroundServiceListener> listeners = null;
 
     @Override
@@ -24,6 +26,8 @@ public class BackgroundService extends Service implements IBackgroundService {
         super.onCreate();
         timer = new Timer();
         Log.d(this.getClass().getName(), "onCreate");
+        binder = new BackgroundServiceBinder(this);
+
     }
 
     @Override
@@ -44,14 +48,12 @@ public class BackgroundService extends Service implements IBackgroundService {
         Log.d(this.getClass().getName(), "onDestroy");
         this.timer.cancel();
 
-        // vider la liste des listeners
-        this.listeners.clear();
     }
 
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        return null;
+        return binder;
     }
 
     // Ajout d'un listener
