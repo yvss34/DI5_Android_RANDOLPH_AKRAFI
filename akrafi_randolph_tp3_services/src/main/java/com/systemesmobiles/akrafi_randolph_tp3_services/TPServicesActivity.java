@@ -39,7 +39,8 @@ public class TPServicesActivity extends AppCompatActivity {
         //action sur le boutton Deconnexion
         buttonDeconnexion.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-
+                unbindService(connection);
+                service.removeListener(listener);
             }
         });
 
