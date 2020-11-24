@@ -41,7 +41,8 @@ public class BackgroundService extends Service implements IBackgroundService {
             public void run() {
                 final Date date = new Date();
                 service.fireDataChanged(date);
-                Log.i(this.getClass().getName(), String.valueOf(date.getHours()) + ":" + String.valueOf(date.getMinutes()) + ":" + String.valueOf(date.getSeconds()) );
+                Log.i(this.getClass().getName(), String.valueOf(date.getHours()) + ":" +
+                        String.valueOf(date.getMinutes()) + ":" + String.valueOf(date.getSeconds()) );
             }
             // Pas de délais d'attente et affichage toute les secondes
         }, 0, 1000);

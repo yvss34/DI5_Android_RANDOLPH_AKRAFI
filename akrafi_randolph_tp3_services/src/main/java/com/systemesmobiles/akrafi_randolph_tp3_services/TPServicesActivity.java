@@ -97,12 +97,11 @@ public class TPServicesActivity extends AppCompatActivity {
                 if (monservice != null) {
                     if (monservice.getListeners() != null) {
                         if (!monservice.getListeners().isEmpty()) {
-                                unbindService(connection);
-                                stopService(intent);
+                            unbindService(connection);
                         }
-
                     }
                 }
+                stopService(intent);
             }
         });
 
