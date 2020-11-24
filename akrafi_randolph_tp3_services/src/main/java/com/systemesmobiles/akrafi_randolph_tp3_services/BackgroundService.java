@@ -16,10 +16,12 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class BackgroundService extends Service implements IBackgroundService {
+
+    //Attributs
     private Timer timer;
     private BackgroundServiceBinder binder ;
     private ArrayList<IBackgroundServiceListener> listeners = null;
-
+    
     @Override
     public void onCreate() {
         super.onCreate();
@@ -30,6 +32,7 @@ public class BackgroundService extends Service implements IBackgroundService {
 
     }
 
+    //Fonction qu'execute le service en boucle
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d(this.getClass().getName(), "onStart");
@@ -71,6 +74,7 @@ public class BackgroundService extends Service implements IBackgroundService {
         if(listeners != null){ listeners.remove(listener); }
     }
 
+    //Recupere la liste de listeners
     @Override
     public ArrayList<IBackgroundServiceListener> getListeners() {
         return listeners;

@@ -19,7 +19,9 @@ import java.util.Date;
 
 public class TPServicesActivity extends AppCompatActivity {
 
+    //Attributs globale
     IBackgroundService monservice = null;
+    ServiceConnection connection = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +35,10 @@ public class TPServicesActivity extends AppCompatActivity {
         Button buttonDeconnexion = (Button) findViewById(R.id. buttonDeconnexion);
         Button buttonStop = (Button) findViewById(R.id. buttonStop);
 
+        //Attributs
         TPServicesActivity context = this;
         Intent intent = new Intent(this, BackgroundService.class);
+
         //Création des listeners
         IBackgroundServiceListener listener = new IBackgroundServiceListener() {
             public void dataChanged(final Object data) {
@@ -48,9 +52,8 @@ public class TPServicesActivity extends AppCompatActivity {
             }
         };
 
-
         //Création de l’objet Connexion
-        ServiceConnection connection = new ServiceConnection() {
+        connection = new ServiceConnection() {
             @Override
             public void onServiceConnected(ComponentName name, IBinder service) {
                 Log.i("BackgroundService", "Connected!");
