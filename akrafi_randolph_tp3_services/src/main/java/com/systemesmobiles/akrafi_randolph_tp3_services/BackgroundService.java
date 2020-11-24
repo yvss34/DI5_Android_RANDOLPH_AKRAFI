@@ -22,6 +22,7 @@ public class BackgroundService extends Service implements IBackgroundService {
     @Override
     public void onCreate() {
         super.onCreate();
+        listeners = new ArrayList< IBackgroundServiceListener >();
         timer = new Timer();
         Log.d(this.getClass().getName(), "onCreate");
     }
@@ -29,9 +30,11 @@ public class BackgroundService extends Service implements IBackgroundService {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d(this.getClass().getName(), "onStart");
+        BackgroundService service = this;
         timer.scheduleAtFixedRate(new TimerTask() {
             public void run() {
                 final Date date = new Date();
+                service.fireDataChanged(date);
                 Log.i(this.getClass().getName(), String.valueOf(date.getHours()) + ":" + String.valueOf(date.getMinutes()) + ":" + String.valueOf(date.getSeconds()) );
             }
             // Pas de délais d'attente et affichage toute les secondes
@@ -41,11 +44,10 @@ public class BackgroundService extends Service implements IBackgroundService {
 
     @Override
     public void onDestroy() {
-        Log.d(this.getClass().getName(), "onDestroy");
-        this.timer.cancel();
-
         // vider la liste des listeners
         this.listeners.clear();
+        this.timer.cancel();
+        Log.d(this.getClass().getName(), "onDestroy");
     }
 
     @Nullable
