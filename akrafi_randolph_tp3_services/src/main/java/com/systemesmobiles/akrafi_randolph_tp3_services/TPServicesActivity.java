@@ -26,9 +26,7 @@ public class TPServicesActivity extends AppCompatActivity {
 
         //action sur le boutton Start
         buttonStart.setOnClickListener(new Button.OnClickListener() {
-            public void onClick(View v) {
-                    startService(intent);
-            }
+            public void onClick(View v) { startService(intent); }
         });
 
         //action sur le boutton Connexion
@@ -47,9 +45,7 @@ public class TPServicesActivity extends AppCompatActivity {
 
         //action sur le boutton Stop
         buttonStop.setOnClickListener(new Button.OnClickListener() {
-            public void onClick(View v) {
-                stopService(intent);
-            }
+            public void onClick(View v) { stopService(intent); }
         });
 
 
