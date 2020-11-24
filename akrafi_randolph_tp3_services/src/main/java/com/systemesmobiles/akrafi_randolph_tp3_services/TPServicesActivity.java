@@ -97,10 +97,7 @@ public class TPServicesActivity extends AppCompatActivity {
                 if (monservice != null) {
                     if (monservice.getListeners() != null) {
                         if (!monservice.getListeners().isEmpty()) {
-                            for (IBackgroundServiceListener listener : monservice.getListeners()) {
                                 unbindService(connection);
-                                monservice.removeListener(listener);
-                            }
                         }
                         stopService(intent);
                     }
