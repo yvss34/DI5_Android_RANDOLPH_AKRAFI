@@ -133,6 +133,19 @@ public class MainActivity extends CameraActivity implements CvCameraViewListener
 
         //Sutf to do here by the students....
 
+        //Gradient
+        byte GradH;
+        byte GradV;
+        for(int x=1;x<w-1;x++)
+        {
+            for(int y=1;y<h-1;y++)
+            {
+                GradH = (byte) Math.abs(outarray[y*w+(x-1)]-outarray[y*w+(x+1)]);
+                GradV = (byte) Math.abs(outarray[(y-1)*w+x]-outarray[(y+1)*w+x]);
+                outarray[y*w+x] = (byte) (GradH + GradV);
+            }
+        }
+
         Mat out=ArrayToMat(gray,outarray);
         return out;
     }
