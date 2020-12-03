@@ -133,18 +133,81 @@ public class MainActivity extends CameraActivity implements CvCameraViewListener
 
         //Sutf to do here by the students....
 
-        //Gradient
-        byte GradH;
-        byte GradV;
-        for(int x=1;x<w-1;x++)
-        {
-            for(int y=1;y<h-1;y++)
-            {
-                GradH = (byte) Math.abs(outarray[y*w+(x-1)]-outarray[y*w+(x+1)]);
-                GradV = (byte) Math.abs(outarray[(y-1)*w+x]-outarray[(y+1)*w+x]);
-                outarray[y*w+x] = (byte) (GradH + GradV);
+        //Sobel
+        int sobel_x[][] = {{-1,0,1},
+                {-2,0,2},
+                {-1,0,1}};
+        int sobel_y[][] = {{-1,-2,-1},
+                {0,0,0},
+                {1,2,1}};
+
+        int pixel_x;
+        int pixel_y;
+
+        for(int x=1;x<w-2;x++) {
+            for (int y = 1; y < h - 2; y++) {
+                pixel_x = (sobel_x[0][0] * outarray[(y-1)*w+(x-1)]) + (sobel_x[0][1] * outarray[(y-1)*w+(x)]) + (sobel_x[0][2] * outarray[(y+1)*w+(x+1)]) +
+                        (sobel_x[1][0] * outarray[(y)*w+(x-1)])   + (sobel_x[1][1] * outarray[(y)*w+(x)])   + (sobel_x[1][2] * outarray[(y)*w+(x+1)]) +
+                        (sobel_x[2][0] * outarray[(y+1)*w+(x-1)]) + (sobel_x[2][1] * outarray[(y+1)*w+(x)]) + (sobel_x[2][2] * outarray[(y+1)*w+(x+1)]);
+                pixel_y = (sobel_y[0][0] * outarray[(y-1)*w+(x-1)]) + (sobel_y[0][1] * outarray[(y-1)*w+(x)]) + (sobel_y[0][2] * outarray[(y+1)*w+(x+1)]) +
+                        (sobel_y[1][0] * outarray[(y)*w+(x-1)])   + (sobel_y[1][1] * outarray[(y)*w+(x)])   + (sobel_y[1][2] * outarray[(y)*w+(x+1)]) +
+                        (sobel_y[2][0] * outarray[(y+1)*w+(x-1)]) + (sobel_y[2][1] * outarray[(y+1)*w+(x)]) + (sobel_x[2][2] * outarray[(y+1)*w+(x+1)]);
+
+                int val = (int)Math.sqrt((pixel_x * pixel_x) + (pixel_y * pixel_y));
+
+                if(val < 0)
+                {
+                    val = 0;
+                }
+
+                if(val > 255)
+                {
+                    val = 255;
+                }
+
+                outarray[y*w+x] = (byte) val;
             }
+
         }
+
+
+
+
+
+
+        //Gradient
+
+//        int GradH;
+//        int GradV;
+//        int val;
+//        for(int x=1;x<w-1;x++)
+//        {
+//            for(int y=1;y<h-1;y++)
+//            {
+//                GradH =  Math.abs(outarray[y*w+(x-1)]-outarray[y*w+(x+1)]);
+//                if(GradH < 0)
+//                {
+//                    GradH = 0;
+//                }
+//
+//                if(GradH > 255)
+//                {
+//                    GradH = 255;
+//                }
+//                GradV =  Math.abs(outarray[(y-1)*w+x]-outarray[(y+1)*w+x]);
+//                if(GradV < 0)
+//                {
+//                    GradV = 0;
+//                }
+//
+//                if(GradV > 255)
+//                {
+//                    GradV = 255;
+//                }
+//
+//                outarray[y*w+x] = (byte) (GradH + GradV);
+//            }
+//        }
 
         Mat out=ArrayToMat(gray,outarray);
         return out;
