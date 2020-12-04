@@ -134,6 +134,7 @@ public class MainActivity extends CameraActivity implements CvCameraViewListener
         //Sutf to do here by the students....
 
         //Sobel
+        //Matrices de convolutions
         int sobel_x[][] = {{-1,0,1},
                 {-2,0,2},
                 {-1,0,1}};
@@ -170,11 +171,6 @@ public class MainActivity extends CameraActivity implements CvCameraViewListener
 
         }
 
-
-
-
-
-
         //Gradient
 
 //        int GradH;
@@ -184,7 +180,7 @@ public class MainActivity extends CameraActivity implements CvCameraViewListener
 //        {
 //            for(int y=1;y<h-1;y++)
 //            {
-//                GradH =  Math.abs(outarray[y*w+(x-1)]-outarray[y*w+(x+1)]);
+//                GradH =  outarray[y*w+(x-1)]-outarray[y*w+(x+1)];
 //                if(GradH < 0)
 //                {
 //                    GradH = 0;
@@ -194,7 +190,7 @@ public class MainActivity extends CameraActivity implements CvCameraViewListener
 //                {
 //                    GradH = 255;
 //                }
-//                GradV =  Math.abs(outarray[(y-1)*w+x]-outarray[(y+1)*w+x]);
+//                GradV =  outarray[(y-1)*w+x]-outarray[(y+1)*w+x];
 //                if(GradV < 0)
 //                {
 //                    GradV = 0;
