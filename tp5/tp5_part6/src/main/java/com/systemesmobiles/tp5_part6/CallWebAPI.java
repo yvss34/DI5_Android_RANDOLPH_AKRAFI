@@ -40,6 +40,7 @@ public class CallWebAPI extends AsyncTask<String, String, String> {
                 parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
                 parser.setInput(in, null);
                 result = parseXML(parser);
+                result.query = param[0];
             }catch(XmlPullParserException e) {
                 e.printStackTrace();
             }catch(IOException e) {
@@ -70,9 +71,6 @@ public class CallWebAPI extends AsyncTask<String, String, String> {
                         }
                         else if( name.equals("countryCode")) {
                             result.countryCode=parser.nextText();
-                        }
-                        else if(name.equals("query")) {
-                            result.query= parser.nextText();
                         }
                         else if(name.equals("country")) {
                             result.country= parser.nextText();
