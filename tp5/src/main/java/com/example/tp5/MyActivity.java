@@ -19,7 +19,8 @@ public class MyActivity extends AppCompatActivity {
 
         //Attribut du layout
         Button btaction = (Button) findViewById(R.id.buttonMy);
-        EditText texte = (EditText) findViewById(R.id.EditText);
+        EditText adresseIP = (EditText) findViewById(R.id.EditText);
+        TextView texte = (TextView) findViewById(R.id.textView2);
 
         btaction.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
@@ -27,7 +28,7 @@ public class MyActivity extends AppCompatActivity {
                 try {
                     URL newurl = new URL("http://www.google.com");
                     //apppel à CallWebAPI
-                    CallWebAPI c = new CallWebAPI(texte);
+                    CallWebAPI c = new CallWebAPI(adresseIP.getText().toString(),texte);
                     c.execute(newurl.toString());
                 } catch (MalformedURLException e) {
                     e.printStackTrace();

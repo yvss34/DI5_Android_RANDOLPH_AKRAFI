@@ -17,10 +17,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class CallWebAPI extends AsyncTask<String, String, String> {
-    private EditText mEditText;
+    private String mEditText;
     private TextView mTextView;
 
-    public CallWebAPI(EditText mEditText,TextView mTextView) {
+    public CallWebAPI(String mEditText,TextView mTextView) {
         this.mEditText = mEditText;
         this.mTextView = mTextView;
     }
@@ -29,9 +29,12 @@ public class CallWebAPI extends AsyncTask<String, String, String> {
     protected String doInBackground(String... param){
         String inputLine = "";
         GeoIP result = new GeoIP();
+        String myURL;
         URL url;
         try {
-            url = new URL(param[0]);
+            myURL = "http://ip-api.com/xml/";
+            myURL += param[0];
+            url = new URL(myURL);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             InputStream in = new BufferedInputStream(urlConnection.getInputStream());
 
