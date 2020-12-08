@@ -27,11 +27,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //mise en place de l'url
                 try {
-                    URL newurl = new URL("http://www.google.com");
                     //apppel à CallWebAPI
                     CallWebAPI c = new CallWebAPI(responseTexte);
-                    c.execute(requestTexte.getText().toString().toString());
-                } catch (MalformedURLException e) {
+                    c.execute(requestTexte.getText().toString());
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
