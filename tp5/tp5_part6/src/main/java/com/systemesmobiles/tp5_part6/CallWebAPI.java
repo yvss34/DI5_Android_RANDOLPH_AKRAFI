@@ -1,6 +1,8 @@
 package com.systemesmobiles.tp5_part6;
 
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.widget.TextView;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -14,16 +16,15 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class CallWebAPI extends AsyncTask<String, String, String> {
-    private TextView mTextView;
+    private GeoIP result;
 
-    public CallWebAPI(TextView mTextView) {
-        this.mTextView = mTextView;
+    public CallWebAPI(GeoIP geoIP) {
+        this.result = geoIP;
     }
 
     @Override
     protected String doInBackground(String... param){
         String inputLine = "";
-        GeoIP result = new GeoIP();
         String myURL;
         URL url;
         try {
@@ -53,7 +54,6 @@ public class CallWebAPI extends AsyncTask<String, String, String> {
     }
 
     protected void onPostExecute(String result){
-        mTextView.setText(result);
     }
 
         private GeoIP parseXML(XmlPullParser parser, String ipuser_adress) throws XmlPullParserException, IOException {
