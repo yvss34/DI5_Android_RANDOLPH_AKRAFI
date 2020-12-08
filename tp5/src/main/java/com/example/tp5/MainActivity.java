@@ -8,7 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+
 import java.io.BufferedInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -26,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         //Attribut du layout
         Button btaction = (Button) findViewById(R.id. button);
         TextView texte = (TextView) findViewById(R.id.textView);
+
 
         btaction.setOnClickListener(new Button.OnClickListener() {
                                         public void onClick(View v) {
