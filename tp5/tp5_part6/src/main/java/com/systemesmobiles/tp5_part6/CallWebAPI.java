@@ -3,21 +3,14 @@ package com.systemesmobiles.tp5_part6;
 import android.os.AsyncTask;
 import android.widget.TextView;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.BufferedInputStream;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.URI;
 import java.net.URL;
 
 public class CallWebAPI extends AsyncTask<String, String, String> {
@@ -33,17 +26,12 @@ public class CallWebAPI extends AsyncTask<String, String, String> {
         GeoIP result = new GeoIP();
         String myURL;
         URL url;
-        InputStream in = null;
         try {
             myURL = "http://ip-api.com/xml/";
             myURL += param[0];
-            HttpClient httpclient = new DefaultHttpClient();
-
-            HttpGet request = new HttpGet();
-            URI website = new URI(myURL);
-            request.setURI(website);
-            HttpResponse response = httpclient.execute(request);
-            in = response.getEntity().getContent();
+            url = new URL(myURL);
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+            InputStream in = new BufferedInputStream(urlConnection.getInputStream());
 
             XmlPullParserFactory pullParserFactory;
             try{
@@ -57,7 +45,7 @@ public class CallWebAPI extends AsyncTask<String, String, String> {
             }catch(IOException e) {
                 e.printStackTrace();
             }
-            //in.close();
+            in.close();
             return result.toString();
         }catch (Exception ignored){
         }

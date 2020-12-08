@@ -41,11 +41,11 @@ public class GeoIP {
 
     @Override
     public String toString() {
-        return "GeoIP{" +
+        return
                 "status='" + status + '\'' +
                 ", query='" + query + '\'' +
                 ", country='" + country + '\'' +
-                ", countryCode='" + countryCode + '\'' +
-                '}';
+                ", countryCode='" + countryCode + '\''
+                ;
     }
 }
