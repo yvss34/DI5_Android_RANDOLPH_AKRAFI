@@ -1,26 +1,19 @@
 package com.example.tp5;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import java.io.BufferedInputStream;
-import java.io.BufferedReader;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,9 +26,16 @@ public class MainActivity extends AppCompatActivity {
         Button btaction = (Button) findViewById(R.id. button);
         TextView texte = (TextView) findViewById(R.id.textView);
 
-        //apppel à CallAPI
-        CallAPI c = new CallAPI(texte);
-        c.execute();
+        //mise en place de l'url
+        try {
+            URL newurl = new URL("http://www.google.com");
+            //apppel à CallWebAPI
+            CallWebAPI c = new CallWebAPI(texte);
+            c.execute(newurl.toString());
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
 
         //action sur le bouton click appelle de la nouvelle activité
         btaction.setOnClickListener(new Button.OnClickListener() {
