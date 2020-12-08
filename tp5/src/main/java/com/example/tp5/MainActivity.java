@@ -29,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
         Button btaction = (Button) findViewById(R.id. button);
         TextView texte = (TextView) findViewById(R.id.textView);
 
+        //apppel à CallAPI
+        CallAPI c = new CallAPI(texte);
+        c.execute();
+
         //action sur le bouton click appelle de la nouvelle activité
         btaction.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
