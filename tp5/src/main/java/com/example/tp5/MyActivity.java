@@ -12,6 +12,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class MyActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,7 +20,8 @@ public class MyActivity extends AppCompatActivity {
 
         //Attribut du layout
         Button btaction = (Button) findViewById(R.id.buttonMy);
-        EditText texte = (EditText) findViewById(R.id.EditText);
+        EditText requestTexte = (EditText) findViewById(R.id.EditText);
+        TextView responseTexte = (TextView) findViewById(R.id.textView);
 
         btaction.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
@@ -27,7 +29,7 @@ public class MyActivity extends AppCompatActivity {
                 try {
                     URL newurl = new URL("http://www.google.com");
                     //apppel à CallWebAPI
-                    CallWebAPI c = new CallWebAPI(texte);
+                    CallWebAPI c = new CallWebAPI(requestTexte);
                     c.execute(newurl.toString());
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
