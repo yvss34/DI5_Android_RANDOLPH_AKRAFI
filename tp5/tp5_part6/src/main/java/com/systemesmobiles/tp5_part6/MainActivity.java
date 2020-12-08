@@ -1,4 +1,6 @@
-package com.example.tp5;
+package com.systemesmobiles.tp5_part6;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
@@ -6,16 +8,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class MyActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my);
+        setContentView(R.layout.activity_main);
 
         //Attribut du layout
         Button btaction = (Button) findViewById(R.id.buttonMy);
@@ -28,8 +29,8 @@ public class MyActivity extends AppCompatActivity {
                 try {
                     URL newurl = new URL("http://www.google.com");
                     //apppel à CallWebAPI
-                    CallWebAPI c = new CallWebAPI(requestTexte.getText().toString(),responseTexte);
-                    c.execute(newurl.toString());
+                    CallWebAPI c = new CallWebAPI(responseTexte);
+                    c.execute(requestTexte.getText().toString().toString());
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }

@@ -1,4 +1,4 @@
-package com.example.tp5;
+package com.systemesmobiles.tp5_part6;
 
 public class GeoIP {
 

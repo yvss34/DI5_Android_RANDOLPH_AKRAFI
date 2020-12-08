@@ -1,3 +1,4 @@
+include ':tp5:tp5_part6'
 include ':tp5'
 include ':akrafi_randolph_tp3_services'
 include ':tp2b'
