@@ -1,5 +1,6 @@
 package com.systemesmobiles.tp5_part6;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -16,10 +17,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class CallWebAPI extends AsyncTask<String, String, String> {
-    private GeoIP result;
+    private MainActivity mainActivity;
 
-    public CallWebAPI(GeoIP geoIP) {
-        this.result = geoIP;
+    public CallWebAPI(MainActivity mainActivity) {
+        this.mainActivity = mainActivity;
     }
 
     @Override
@@ -33,7 +34,7 @@ public class CallWebAPI extends AsyncTask<String, String, String> {
             url = new URL(myURL);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-
+            GeoIP result = new GeoIP();
             XmlPullParserFactory pullParserFactory;
             try{
                 pullParserFactory = XmlPullParserFactory.newInstance();
@@ -54,6 +55,14 @@ public class CallWebAPI extends AsyncTask<String, String, String> {
     }
 
     protected void onPostExecute(String result){
+        Intent defineIntent = new Intent(mainActivity, OtherActivity.class);
+
+        // Conteneur qui vas nous permettre de passer l'objet personne
+        Bundle objetbunble = new Bundle();
+        objetbunble.putString("passInfo", result);
+        // on insere le bundle dans l'intent
+        defineIntent.putExtras(objetbunble);
+        mainActivity.startActivity(defineIntent);
     }
 
         private GeoIP parseXML(XmlPullParser parser, String ipuser_adress) throws XmlPullParserException, IOException {

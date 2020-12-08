@@ -25,24 +25,13 @@ public class MainActivity extends AppCompatActivity {
 
         btaction.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-                //création de notre item
-                Intent defineIntent = new Intent(MainActivity.this, OtherActivity.class);
-
-                GeoIP geoIP = new GeoIP();
                 try {
                     //apppel à CallWebAPI
-                    CallWebAPI c = new CallWebAPI(geoIP);
+                    CallWebAPI c = new CallWebAPI(MainActivity.this);
                     c.execute(requestTexte.getText().toString());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                // Conteneur qui vas nous permettre de passer l'objet personne
-                Bundle objetbunble = new Bundle();
-                objetbunble.putString("passInfo", geoIP.toString());
-                // on insere le bundle dans l'intent
-                defineIntent.putExtras(objetbunble);
-                // on appelle notre activité avec intention d'attente d'un resultat
-                startActivity(defineIntent);
             }
         });
 
